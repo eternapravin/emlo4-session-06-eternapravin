@@ -1,0 +1,2 @@
+Predicted: Golden Retriever
+Confidence: 3.31

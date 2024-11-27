@@ -1,0 +1,2 @@
+Predicted: Beagle
+Confidence: 4.22

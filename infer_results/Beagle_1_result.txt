@@ -1,0 +1,2 @@
+Predicted: Labrador Retriever
+Confidence: 4.12

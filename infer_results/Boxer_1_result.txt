@@ -1,0 +1,2 @@
+Predicted: German Shepherd
+Confidence: 4.15
