@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python Packages
         run: pip install -r requirements.txt
 
-      # Note you can also directly use "GDRIVE_CREDENTIALS_DATA" as env variable and pull it
+      # Note you can also directly use "GDRIVE_CREDENTIALS_DATA" as env variable and pull
       - name: Create credentials.json
         env:
           GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
