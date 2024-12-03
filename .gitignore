@@ -169,3 +169,6 @@ cython_debug/
 bin
 /output_dir/
 /checkpoints/
+/data
+last.ckpt
+credentials.json

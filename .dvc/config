@@ -1,0 +1,10 @@
+[core]
+    autostage = true
+    remote = gcloud
+['remote "gdrive"']
+    url = gdrive://165Y2xYALUX3GniwJbmSy8EuzLXUThBPv
+    gdrive_acknowledge_abuse = true
+    gdrive_client_id = 12837698431-0i9u8u8v7mn5bmtk65n5fo1r21bc7sr3.apps.googleusercontent.com
+    gdrive_client_secret = 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
+['remote "gcloud"']
+    url = gs://session06/dvcsession06
