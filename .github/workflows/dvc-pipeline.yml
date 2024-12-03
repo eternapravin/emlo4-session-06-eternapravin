@@ -25,7 +25,7 @@ jobs:
 
       - name: Modify DVC Remote
         run: |
-          dvc remote modify --local myremote credentialpath credentials.json
+          dvc remote modify --local gcloud credentialpath credentials.json
 
       - name: DVC Pull Data
         run: |
