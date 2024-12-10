@@ -15,7 +15,10 @@ class CatDogImageDataModule(L.LightningDataModule):
         data_dir: Union[str, Path] = "data",
         num_workers: int = 0,
         batch_size: int = 8,
-        splits: Tuple[float, float, float] = (0.8, 0.1, 0.1),
+        splits: Tuple[float, float] = (
+            0.8,
+            0.2,
+        ),  # Modified to only include train/val split
         pin_memory: bool = False,
     ):
         super().__init__()
@@ -24,7 +27,9 @@ class CatDogImageDataModule(L.LightningDataModule):
         self._batch_size = batch_size
         self._splits = splits
         self._pin_memory = pin_memory
-        self._dataset = None
+        self._train_dataset = None
+        self._val_dataset = None
+        self._test_dataset = None
 
     def prepare_data(self):
         """Download images if not already downloaded and extracted."""
@@ -71,16 +76,21 @@ class CatDogImageDataModule(L.LightningDataModule):
         return ImageFolder(root=root, transform=transform)
 
     def setup(self, stage: str = None):
-        if self._dataset is None:
-            self._dataset = self.create_dataset(
+        if self._train_dataset is None:
+            train_data = self.create_dataset(
                 self.data_path / "cats_and_dogs_filtered" / "train",
                 self.train_transform,
             )
-            train_size = int(self._splits[0] * len(self._dataset))
-            val_size = int(self._splits[1] * len(self._dataset))
-            test_size = len(self._dataset) - train_size - val_size
-            self.train_dataset, self.val_dataset, self.test_dataset = random_split(
-                self._dataset, [train_size, val_size, test_size]
+            train_size = int(self._splits[0] * len(train_data))
+            val_size = len(train_data) - train_size
+            self._train_dataset, self._val_dataset = random_split(
+                train_data, [train_size, val_size]
+            )
+
+        if self._test_dataset is None:
+            self._test_dataset = self.create_dataset(
+                self.data_path / "cats_and_dogs_filtered" / "validation",
+                self.valid_transform,
             )
 
     def __dataloader(self, dataset, shuffle: bool = False):
@@ -93,10 +103,10 @@ class CatDogImageDataModule(L.LightningDataModule):
         )
 
     def train_dataloader(self):
-        return self.__dataloader(self.train_dataset, shuffle=True)
+        return self.__dataloader(self._train_dataset, shuffle=True)
 
     def val_dataloader(self):
-        return self.__dataloader(self.val_dataset)
+        return self.__dataloader(self._val_dataset)
 
     def test_dataloader(self):
-        return self.__dataloader(self.test_dataset)
+        return self.__dataloader(self._test_dataset)
