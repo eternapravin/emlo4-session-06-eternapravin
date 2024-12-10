@@ -12,6 +12,15 @@ from typing import Any, Dict
 
 import rootutils
 
+from comet_ml import start
+from comet_ml.integration.pytorch import log_model
+
+experiment = start(
+  api_key="zqyBU4kfjfxEqs5LEd4L2S9gr",
+  project_name="general",
+  workspace="eternapravin"
+)
+
 # Setup root directory
 root = rootutils.setup_root(__file__, indicator=".project-root", pythonpath=True)
 
