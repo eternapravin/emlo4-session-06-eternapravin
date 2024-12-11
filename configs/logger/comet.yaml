@@ -1,0 +1,6 @@
+comet:
+  _target_: lightning.pytorch.loggers.CometLogger
+  save_dir: "${paths.output_dir}"
+  experiment_name: "${paths.output_dir}"
+  api_key: "zqyBU4kfjfxEqs5LEd4L2S9gr"
+  workspace: "eternapravin"
