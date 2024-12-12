@@ -8,7 +8,6 @@ from torchvision import transforms
 from torchvision.datasets import ImageFolder
 from torchvision.datasets.utils import download_and_extract_archive
 
-
 class CatDogImageDataModule(L.LightningDataModule):
     def __init__(
         self,

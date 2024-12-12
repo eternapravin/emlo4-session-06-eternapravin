@@ -1,19 +1,20 @@
 import os
+#import comet_ml
+from comet_ml import start
+from pytorch_lightning.loggers import CometLogger
+
 from pathlib import Path
 import logging
-
 import hydra
+
 from omegaconf import DictConfig, OmegaConf
 import lightning as L
 from lightning.pytorch.loggers import Logger
 from typing import List
 from lightning.pytorch.callbacks import ModelCheckpoint
 from typing import Any, Dict
-
 import rootutils
 
-from comet_ml import start
-from comet_ml.integration.pytorch import CometLogger
 
 # Setup root directory
 root = rootutils.setup_root(__file__, indicator=".project-root", pythonpath=True)
