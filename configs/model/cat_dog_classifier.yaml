@@ -1,7 +1,7 @@
 _target_: src.models.cat_dog_classifier.CatDogClassifier
 
 # Model parameters
-base_model: mobilenetv3
+base_model: vit_tiny_patch16_224 #mobilenetv3
 num_classes: 10
 # pretrained: true
 

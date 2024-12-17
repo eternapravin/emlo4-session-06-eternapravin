@@ -32,7 +32,7 @@ model:
 
 trainer:
   min_epochs: 1
-  max_epochs: 1
+  max_epochs: 5
 
 callbacks:
   model_checkpoint:
@@ -40,6 +40,7 @@ callbacks:
     mode: "max"
     save_top_k: 1
     save_last: True
+    filename: "checkpoints/catsdogs/epoch_best"
 
   early_stopping:
     monitor: "val_acc"

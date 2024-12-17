@@ -1,10 +1,7 @@
 import os
-#import comet_ml
-from comet_ml import start
-from pytorch_lightning.loggers import CometLogger
-
 from pathlib import Path
 import logging
+import comet_ml
 import hydra
 
 from omegaconf import DictConfig, OmegaConf
@@ -150,8 +147,8 @@ def main(cfg: DictConfig):
         train(cfg, trainer, model, datamodule)
 
     # Test the model
-    if cfg.get("test"):
-        test(cfg, trainer, model, datamodule)
+    """if cfg.get("test"):
+        test(cfg, trainer, model, datamodule)"""
 
 
 if __name__ == "__main__":

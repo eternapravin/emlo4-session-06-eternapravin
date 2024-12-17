@@ -4,6 +4,9 @@ default_root_dir: ${paths.output_dir}
 
 min_epochs: 1 # prevents early stopping
 max_epochs: 2
+limit_train_batches: 0.25
+limit_test_batches: 0.25
+limit_val_batches: 0.25
 
 accelerator: auto
 devices: 1
