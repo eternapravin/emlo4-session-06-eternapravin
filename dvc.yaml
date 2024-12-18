@@ -6,14 +6,16 @@ stages:
     - data/cats_and_dogs_filtered
     - src/train.py
   test:
-    cmd: python src/evaluate.py --config-name=evaluate experiment=catdog_ex_eval.yaml
+    cmd: python src/evaluate.py --config-name=evaluate experiment=catdog_ex_eval
     deps:
     - configs/experiment/catdog_ex_eval.yaml
     - src/evaluate.py
   infer:
-    cmd: python src/infer.py --config-name=infer experiment=catdog_ex_eval.yaml
+    cmd: python src/infer.py --config-name=infer experiment=catdog_ex_eval
     deps:
     - configs/experiment/catdog_ex_eval.yaml
     - src/infer.py
   report_generation:
+    cmd: python src/utils/model_metrics.py
+  report_genration:
     cmd: python src/utils/model_metrics.py

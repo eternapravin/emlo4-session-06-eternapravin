@@ -1,0 +1,33 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/train.py --config-name=train experiment=catdog_ex trainer.max_epochs=5
+    deps:
+    - path: configs/experiment/catdog_ex.yaml
+      hash: md5
+      md5: bfca33c80b3c5a710c976bd25f4bc067
+      size: 823
+      isexec: true
+    - path: data/cats_and_dogs_filtered
+      hash: md5
+      md5: 2be60ab3db40b76d995e60da6ffae2b7.dir
+      size: 866190740
+      nfiles: 25002
+    - path: src/train.py
+      hash: md5
+      md5: 1763765045e9c485225627d77ef56d10
+      size: 4941
+      isexec: true
+  test:
+    cmd: python src/evaluate.py --config-name=evaluate experiment=catdog_ex_eval
+    deps:
+    - path: configs/experiment/catdog_ex_eval.yaml
+      hash: md5
+      md5: 9d8353fb667dd87443a8d9acad0f6de5
+      size: 913
+      isexec: true
+    - path: src/evaluate.py
+      hash: md5
+      md5: 712d56a0af7a5dc3c9ea1b266b664acc
+      size: 2356
+      isexec: true

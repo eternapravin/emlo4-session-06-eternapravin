@@ -12,6 +12,7 @@ from pytorch_lightning.utilities import rank_zero_only
 
 # Import your model class
 from src.models.dogbreed_classifier import DogBreedClassifier
+from src.models.cat_dog_classifier import CatDogClassifier
 
 root = rootutils.setup_root(__file__, indicator=".project-root", pythonpath=True)
 log = logging.getLogger(__name__)
@@ -41,7 +42,8 @@ def main(cfg: DictConfig) -> None:
     setup_logger(log_dir / "infer_log.log")
 
     log.info(f"Instantiating model <{cfg.model._target_}>")
-    model = DogBreedClassifier.load_from_checkpoint(cfg.ckpt_path, **cfg.model, strict=False)
+    #model = DogBreedClassifier.load_from_checkpoint(cfg.ckpt_path, **cfg.model, strict=False)
+    model = CatDogClassifier.load_from_checkpoint(cfg.ckpt_path, **cfg.model, strict=False)
 
     log.info(f"Loading model checkpoint from: {cfg.ckpt_path}")
     print(f"Resolved Checkpoint Path: {cfg.ckpt_path}")

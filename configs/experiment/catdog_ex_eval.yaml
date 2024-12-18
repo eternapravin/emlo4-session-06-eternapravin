@@ -5,7 +5,7 @@
 
 defaults:
   - override /data: catdog
-  - override /model: cat_dog_classsifer
+  - override /model: cat_dog_classifier
   - override /callbacks: default
   - override /logger: default
   - override /trainer: default
